@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: racer-login
-        image: <your-dockerhub-username>/racer-login:latest
+        image: mayur2808/racer-login:latest
         ports:
         - containerPort: 5000
         volumeMounts:
