@@ -9,10 +9,6 @@ db.init_app(app)
 @app.before_first_request
 def create_tables():
     db.create_all()
-    # Add a default user if not present
-    if not User.query.filter_by(username='racer').first():
-        db.session.add(User(username='racer', password='secret'))
-        db.session.commit()
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -25,6 +21,25 @@ def login():
         else:
             return 'Invalid credentials', 401
     return render_template('login.html')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        # Check if user already exists
+        if User.query.filter_by(username=username).first():
+            return 'Username already exists', 400
+        user = User(username=username, password=password)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('login'))
+    return render_template('register.html')
+
+@app.route('/users')
+def users():
+    users = User.query.order_by(User.username).all()
+    return render_template('users.html', users=users)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
