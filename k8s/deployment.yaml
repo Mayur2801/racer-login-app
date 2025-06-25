@@ -17,3 +17,10 @@ spec:
         image: <your-dockerhub-username>/racer-login:latest
         ports:
         - containerPort: 5000
+        volumeMounts:
+        - name: racer-db
+          mountPath: /app/racer.db
+          subPath: racer.db
+      volumes:
+      - name: racer-db
+        emptyDir: {}
