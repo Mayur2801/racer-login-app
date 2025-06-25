@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Racer Login</title>
+    <style>
+        body {
+            background-image: url("/static/car.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-box {
+            background: rgba(255,255,255,0.85);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>Racer Login</h2>
+        <form method="post">
+            <label>Username: <input name="username"></label><br><br>
+            <label>Password: <input name="password" type="password"></label><br><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
