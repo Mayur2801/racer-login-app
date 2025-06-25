@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: racer-login
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: racer-login
+  template:
+    metadata:
+      labels:
+        app: racer-login
+    spec:
+      containers:
+      - name: racer-login
+        image: <your-dockerhub-username>/racer-login:latest
+        ports:
+        - containerPort: 5000
