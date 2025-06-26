@@ -2,13 +2,34 @@
 <html>
 <head>
     <title>Registered Users</title>
+    <style>
+        body {
+            background-image: url("/static/car.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .users-box {
+            background: rgba(255,255,255,0.85);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #333;
+        }
+    </style>
 </head>
 <body>
-    <h2>Registered Users</h2>
-    <ul>
-        {% for user in users %}
-            <li>{{ user.username }}</li>
-        {% endfor %}
-    </ul>
+    <div class="users-box">
+        <h2>Registered Users</h2>
+        <ul>
+            {% for user in users %}
+                <li>{{ user.username }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

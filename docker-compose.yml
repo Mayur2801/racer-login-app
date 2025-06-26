@@ -1,0 +1,9 @@
+version: '3.2'
+services:
+  web:
+    build: .
+    image: mayur2808/racer-login-app:latest
+    container_name: racer-login-app
+    ports:
+      - "5001:5000"
+    restart: unless-stopped 

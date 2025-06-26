@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: racer-login
-        image: mayur2808/racer-login:latest
+        image: mayur2808/racer-login-app:latest
         ports:
         - containerPort: 5000
         volumeMounts:

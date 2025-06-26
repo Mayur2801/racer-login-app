@@ -6,8 +6,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///racer.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
-@app.before_first_request
-def create_tables():
+with app.app_context():
     db.create_all()
 
 @app.route('/', methods=['GET', 'POST'])
@@ -40,6 +39,21 @@ def register():
 def users():
     users = User.query.order_by(User.username).all()
     return render_template('users.html', users=users)
+
+@app.route('/healthz')
+def healthz():
+    return 'OK', 200
+
+@app.route('/cars')
+def cars():
+    car_list = [
+        {"name": "Ferrari F8 Tributo", "type": "Sports", "year": 2022, "image": "car.jpg"},
+        {"name": "Lamborghini Huracan EVO", "type": "Sports", "year": 2021, "image": "car.jpg"},
+        {"name": "Porsche 911 Turbo S", "type": "Sports", "year": 2023, "image": "car.jpg"},
+        {"name": "Tesla Model S Plaid", "type": "Electric", "year": 2022, "image": "car.jpg"},
+        {"name": "BMW M4 Competition", "type": "Coupe", "year": 2022, "image": "car.jpg"}
+    ]
+    return render_template('cars.html', cars=car_list)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

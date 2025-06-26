@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Information</title>
+    <style>
+        body {
+            background-image: url("/static/car.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cars-box {
+            background: rgba(255,255,255,0.90);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #333;
+            max-width: 700px;
+        }
+        .car-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .car-item:last-child {
+            border-bottom: none;
+        }
+        .car-img {
+            width: 100px;
+            height: 60px;
+            object-fit: cover;
+            margin-right: 20px;
+            border-radius: 6px;
+        }
+        .car-info {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cars-box">
+        <h2>Available Cars</h2>
+        {% for car in cars %}
+        <div class="car-item">
+            <img src="/static/{{ car.image }}" alt="{{ car.name }}" class="car-img">
+            <div class="car-info">
+                <strong>{{ car.name }}</strong><br>
+                Type: {{ car.type }}<br>
+                Year: {{ car.year }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html> 

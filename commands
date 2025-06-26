@@ -1,0 +1,2 @@
+bash racer-login-app/build.sh
+bash racer-login-app/deploy.sh

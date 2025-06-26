@@ -3,4 +3,4 @@ WORKDIR /app
 COPY app/ .
 RUN pip install -r requirements.txt
 EXPOSE 5000
-CMD ["python", "main.py"]
+CMD ["/bin/sh", "-c", "python main.py > /tmp/app.log 2>&1"]
