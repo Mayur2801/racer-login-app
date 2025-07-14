@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from models import db, User
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///racer.db'
@@ -56,4 +57,5 @@ def cars():
     return render_template('cars.html', cars=car_list)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 8080))  # Use PORT from env or default 8080
+    app.run(host='0.0.0.0', port=port)
