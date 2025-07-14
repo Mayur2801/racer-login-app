@@ -46,13 +46,39 @@ def healthz():
     return 'OK', 200
 
 @app.route('/cars')
+@app.route('/cars')
 def cars():
     car_list = [
-        {"name": "Ferrari F8 Tributo", "type": "Sports", "year": 2022, "image": "car.jpg"},
-        {"name": "Lamborghini Huracan EVO", "type": "Sports", "year": 2021, "image": "car.jpg"},
-        {"name": "Porsche 911 Turbo S", "type": "Sports", "year": 2023, "image": "car.jpg"},
-        {"name": "Tesla Model S Plaid", "type": "Electric", "year": 2022, "image": "car.jpg"},
-        {"name": "BMW M4 Competition", "type": "Coupe", "year": 2022, "image": "car.jpg"}
+        {
+            "name": "Mercedes W11",
+            "type": "F1",
+            "year": 2020,
+            "image": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Mercedes_W11_Williams_FW42_Silverstone_2019_01.jpg"
+        },
+        {
+            "name": "Red Bull RB16B",
+            "type": "F1",
+            "year": 2021,
+            "image": "https://upload.wikimedia.org/wikipedia/commons/1/1d/2021_British_Grand_Prix_%2825219345947%29.jpg"
+        },
+        {
+            "name": "Ferrari SF1000",
+            "type": "F1",
+            "year": 2020,
+            "image": "https://upload.wikimedia.org/wikipedia/commons/5/5e/2020_Ferrari_SF1000_front_left_%28cropped%29.jpg"
+        },
+        {
+            "name": "McLaren MCL35M",
+            "type": "F1",
+            "year": 2021,
+            "image": "https://upload.wikimedia.org/wikipedia/commons/d/d9/McLaren_MCL35M_2021_British_GP_%283%29.jpg"
+        },
+        {
+            "name": "Alpine A521",
+            "type": "F1",
+            "year": 2021,
+            "image": "https://upload.wikimedia.org/wikipedia/commons/f/f1/2021_Alpine_A521_Side.jpg"
+        }
     ]
     return render_template('cars.html', cars=car_list)
 
